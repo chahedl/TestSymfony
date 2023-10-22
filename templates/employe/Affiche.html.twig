@@ -1,0 +1,32 @@
+{% block body %}
+<h1>Liste des Employes</h1>
+<table border=1>
+    <thead>
+        <tr>
+            <th>firstName</th>
+            <th>lastName</th>
+            <th>Birthday</th>
+            <th>Entreprise</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+       <tr> {% for a in Employe %} </tr>
+        <tr>
+            <td>{{ a.firstName }}</td>
+            <td>{{ a.lastName }}</td>
+            <td>{{ a.birthday | date('M-d-Y') }}</td>
+            <td>{{ a.entreprise }}</td>
+            <td>
+        
+            <a href="{{ path('app_affiche_employe')}}">Add</a>
+            <td>
+            <a href="{{ path('app_update_employe', {'id': a.id}) }}">edit</a></td>
+            <td><a href="{{ path('app_delete_employe', {'id': a.id}) }}">delete</a></td>
+            </td>     
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

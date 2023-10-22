@@ -1,0 +1,26 @@
+{% block body %}
+<h1>Liste des Entreprises</h1>
+<table border=1>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Adress</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+       <tr> {% for a in Entreprise %} </tr>
+        <tr>
+            <td>{{ a.Name }}</td>
+            <td>{{ a.address }}</td>
+            <td>
+            <a href="{{ path('app_add_entreprise')}}">Add</a>
+            <a href="{{ path('app_edit_entreprise', {'id': a.id}) }}">edit</a>
+            <a href="{{ path('app_delete_entreprise', {'name': a.name}) }}">delete</a>
+            </td>     
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
